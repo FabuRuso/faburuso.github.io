@@ -1,28 +1,133 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script>
-      function jsoninput()
-        {
-          let s = document.getElementsByClassName("ranger")[0].value;
-          document.getElementsByClassName("SUDNOh1")[0].setAttribute('style',`font-size:${s}px`);
-          return true;
-        }
-    </script>
-  </head>
+    <head>
+        
+        <meta charset="utf-8">
+        <link href="CSS/colonna mt.css" rel="stylesheet">
+        <style>
+            :root{
+                touch-action: None;
+            }
+                @property --bg_color {
+                    syntax: "<color>";
+                    inherits: false;
+                    initial-value: hotpink;
+            }
+            body {
+                background: radial-gradient(var(--bg_color),#101010);
+                background-size:100vw 100vh;
+                animation:10s infinite linear 0s running backgrounding;
+            }
+            @keyframes backgrounding {
+                0%{
+                    --bg_color:#313131;
+                }
+                25%{
+                    --bg_color:#3f3131;
+                }
+                50%{
+                    --bg_color:#313f31;
+                }
+                75%{
+                    --bg_color:#31313f;
+                }
+                100%{
+                    --bg_color:#313131;
+                }
+            }
+            .title_container {
+                background-color: black;
+                position: sticky;
+                margin-top:-8px;
+                top:0%;
+                width: 80%;
+                height: fit-content;
+                place-items: center;
+                place-self: center;
+                border-bottom-right-radius: 4vh;
+                border-bottom-left-radius: 4vh;
+            }
+            .title {
+                user-select: none;
+                background:repeating-linear-gradient(to left in oklab,#aa8008,#8aa800,#08aa80,#008aa8,#8008aa,#a8008a,#aa8008);
+                background-clip: text;
+                background-size:200% 200%;
+                animation:5s linear infinite 0s running gradienting;
+                width:fit-content;
+                color:transparent;
+                margin-top:0;
+                padding-top:2vh;
+                padding-bottom:1.5vh;
+                font-family:"Colonna MT";
+                font-size:6vh;
+            }
 
-  <body>
-    <div style="text-align:center">
-      <h1 class='SUDNOh1' style="font-size:40px">SUDNO</h1>
-      <input style="jsst()" class="ranger" type="range" min=0 max=200 step=1 value=40 oninput="jsoninput()">
-    </div>
-  </body>
+            @keyframes gradienting {
+                from {
+                    background-position-x: 0%
+                }
+                to {
+                    background-position-x: 200%
+                }
+            }
+
+            @property --load_percentage {
+                syntax: "<percentage>";
+                inherits: false;
+                initial-value:1000%
+            }
+            .transer {
+                transition: all 1s ease-in-out;
+            }
+            .loader {
+                background:radial-gradient(#2a2a2a 0%,cyan var(--load_percentage));
+                border-radius: 100%;
+                width: 19vw;
+                min-height: 19vw;
+                height:19vw;
+                animation: 1s ease-in-out infinite 1s alternate load_bounding;
+                position:absolute top;
+                place-self: center;
+                margin-top:40%;
+            }
+            .just_container {
+                height: fit-content;
+                min-height: 19vw;
+                width:90vw;
+                margin-top:20%;
+                place-self:center;
+                border-radius:4vh;
+                content: "hello";
+                border-top-style:groove;
+                border-bottom-style:groove;
+                border-color:cyan;
+            }
+
+            @keyframes load_bounding {
+                from {
+                    --load_percentage:200%;
+                }
+                to {
+                    --load_percentage:50%;
+                }
+            }
+        </style>
+        <script>
+            function onload() {
+                console.log("Was called by onload");
+                setTimeout(()=>{
+                        func_container.classList = "just_container transer";
+                },3000)
+            }
+        </script>
+    </head>
+    <body onload="onload()">
+        <div class="title_container">
+            <h1 class="title" select>
+                HILFORT
+            </h1>
+        </div>
+        <div id="func_container" class="loader transer">
+        </div>
+    </body>
 </html>
-<script>
-  function refresher ()
-  {
-    setInterval(function () {
-    let a = Math.sqrt(this.innerWidth)*10;
-    document.getElementsByClassName("ranger")[0].setAttribute('style',`width:${a}px;`);});
-  }
-  refresher();
-</script>
