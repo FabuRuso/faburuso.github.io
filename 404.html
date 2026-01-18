@@ -1,5 +1,48 @@
+<!DOCTYPE HTML>
 <html>
-<h1>
-nie mam
-</h1>
+<head>
+  <style>
+    .title_container {
+                background-color: black;
+                position: sticky;
+                margin-top:-8px;
+                top:0%;
+                width: 80%;
+                height: fit-content;
+                place-items: center;
+                place-self: center;
+                border-bottom-right-radius: 4vh;
+                border-bottom-left-radius: 4vh;
+            }
+            .title {
+                background:repeating-linear-gradient(to left in oklab,#aa8008,#8aa800,#08aa80,#008aa8,#8008aa,#a8008a,#aa8008);
+                background-clip: text;
+                background-size:200% 200%;
+                animation:5s linear infinite 0s running gradienting;
+                width:fit-content;
+                color:transparent;
+                margin-top:0;
+                padding-top:2vh;
+                padding-bottom:1.5vh;
+                font-family:"Colonna MT";
+                font-size:6vh;
+            }
+
+            @keyframes gradienting {
+                from {
+                    background-position-x: 0%
+                }
+                to {
+                    background-position-x: 200%
+                }
+            }
+  </style>
+</head>
+<body>
+  <div class="title_container">
+            <h1 class="title">
+                HILFORT
+            </h1>
+        </div>
+</body>
 </html>
